@@ -42,7 +42,7 @@ next:
 check_brackets:
     move $t9, $sp            # m?c ng?n x?p r?ng
     move $t0, $a0            # con tr? ký t?
-    li   $t1, 0              # v? trí (??m t? 1)
+    li   $t1, 0              # con tro ki tu
 loop:
     lb   $t2, 0($t0)
     beq  $t2, $zero, eos     # g?p byte 0: h?t chu?i
@@ -75,7 +75,7 @@ push:
 close:
     beq  $sp, $t9, err2      # ?óng khi ng?n x?p r?ng
     lw   $t5, 0($sp)
-    bne  $t5, $t4, err1      # khác lo?i
+    bne  $t5, $t4, err1      # khac loai
     addiu $sp, $sp, 4        # pop
     j    loop
 
@@ -97,4 +97,5 @@ err3:
     li   $v1, 3
 done:
     move $sp, $t9            # khôi ph?c $sp
+    
     jr   $ra
